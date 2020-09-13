@@ -1,4 +1,4 @@
-![Alex Jewell logo](logo.png)
+![Alex Jewell logo](http://alexjewell.com/images/logo.png)
 # Alex Jewell
 _Party in the frontend, business in the backend_
 [Senior UI Software Engineer](https://www.linkedin.com/in/alexjewellcom/)
