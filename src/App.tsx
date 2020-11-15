@@ -1,130 +1,193 @@
-import React, { useState } from 'react';
-import { Avatar, Box, Button, CheckBox, Grommet, Heading, Image, Text } from 'grommet';
+import React from 'react';
+import styled from 'styled-components';
+import { Anchor, Box, Footer, Grid, Grommet, Heading, Image, Paragraph, Text } from 'grommet';
 import { Instagram } from 'grommet-icons';
 import Logo from './assets/logo.png';
-import Face from './assets/face.svg';
+import homeFaces from './assets/home-faces.png';
+import webFaces from './assets/web-faces.png';
+import face from './assets/face.svg';
 
 const theme = {
   global: {
     colors: {
-      brand: '#D5392B',
-      'accent-1': '#8D2526',
-      'accent-2': '#FBE16D',
-      'accent-3': '#EC962D'
+      brand: '#50E3C2',
+      'accent-1': '#BF53A2',
+      'accent-2': '#F4CCE9',
+      'accent-3': '#5BA8E4',
+      'accent-4': '#E5E5E5',
+      'accent-5': '#595858'
     },
     font: {
-      family: 'Roboto',
+      family: 'Lato',
       size: '18px',
       height: '20px'
     }
   }
 };
 
-const categories = [
-  {
-    label: '@bestfoodalex',
-    name: 'marketing',
-    checked: true
-  },
-  {
-    label: 'software engineering',
-    name: 'software',
-    checked: true
-  },
-  {
-    label: 'blockchain',
-    name: 'blockchain',
-    checked: true
-  },
-  {
-    label: 'politics',
-    name: 'politics',
-    checked: true
-  },
-  {
-    label: 'tv / media',
-    name: 'media',
-    checked: true
-  }
-];
-
-const categoryCheckedDefault: any = {};
-categories.forEach(cat => { categoryCheckedDefault[cat.name] = cat.checked; });
-
-const AppBar = (props: any) => (
-  <Box
-    tag='header'
-    direction='row'
-    align='center'
-    justify='between'
-    background='brand'
-    pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-    elevation='medium'
-    style={{ zIndex: '1' }}
-    {...props}
-  />
-);
-
-function App() {
-  const [categoryChecked, setCategoryChecked] = useState(categoryCheckedDefault);
-  const onChange = (event: any) => {
-    const chkName = event.target.name;
-    const newCategoryCheckedState = { ...categoryChecked };
-
-    newCategoryCheckedState[chkName] = event.target.checked;
-
-    setCategoryChecked(newCategoryCheckedState);
-  };
-
+const App = () => {
   return (
     <Grommet theme={theme} full>
-      <Box fill>
-        <AppBar>
-          <Avatar src={Logo} />
-          <Button icon={<Instagram />} label="bestfoodalex" plain onClick={() => {}} />
-        </AppBar>
-        <Box direction='row' flex>
-          <Box pad="medium">
-            <Heading level="1" margin="10px 0" size="medium">Alex Jewell</Heading>
-            <Text size="large">
-              Social software engineer. 
-              Boutique foodporn director and marketer. 
-              Blockchain and decentralization consultant and activist. 
-              Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media. 
-            </Text>
-            <Text size="medium">
-              Some other text here.
-            </Text>
-          </Box>
-          <Box pad="medium" width="large">
-            <Image
-              fit="contain"
-              fill
-              src={Face}
-            />
-          </Box>
+      <RelativeGrid
+        columns={{
+          count: 2,
+          size: 'auto'
+        }}
+        fill="vertical"
+        gap="none"
+      >
+        <Box alignContent="center" background="accent-4" justify="center">
+          <LogoImage href="#">
+            <Image alt="Alex Jewell Logo" src={Logo} />
+          </LogoImage>
+          <WebAnchor alignSelf="end" color="black" label="<Web/>" href="#web" />
+          <FacesImage href="#me">
+            <Image alt="Alex Jewell Faces" src={homeFaces} width="medium" />
+          </FacesImage>
         </Box>
-        <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
-          <Box
-            width="auto"
-            background="light-2"
-            elevation="small"
-            pad="medium"
-          >
-            <Heading level="2" margin="0 0 20px 0" size="small">Categories</Heading>
-            {categories.map(chk => (
-              <Box pad="small">
-                <CheckBox label={chk.label} name={chk.name} checked={categoryChecked[chk.name]} onChange={onChange} toggle />
-              </Box>
-            ))}
-          </Box>
-          <Box flex align="center" justify="center">
-            app body
-          </Box>
+        <Box alignContent="center" background="brand" justify="center">
+          <InfluenceAnchor color="black" label="#influence" href="#" />
         </Box>
+      </RelativeGrid>
+      <Box id="me" pad="large">
+        <Heading level="1" size="large">me</Heading>
+        <Paragraph size="large">
+          Social software engineer. 
+          Boutique foodporn director and marketer. 
+          Blockchain and decentralization consultant and activist. 
+          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media. 
+        </Paragraph>
       </Box>
+      <RelativeGrid
+        columns={{
+          count: 2,
+          size: 'auto'
+        }}
+        fill="vertical"
+        gap="none"
+        id="web"
+      >
+        <Box pad="large">
+          <Heading level="2" size="large">web</Heading>
+          <Paragraph size="large">
+            I've been peeking underneath the web since I was a kid, tinkering with the very fabric of the medium we now use for practically everything.
+          </Paragraph>
+          <Paragraph size="medium">
+            Technology seamlessly drives our lives. Working through the complex process of finding simple solutions to everyday problems is where I 
+            flourish, giving new opportunity to the product or brand I'm focusing on.
+          </Paragraph>
+          <Box background="accent-5">
+            <Paragraph size="large">
+              I'm a liaison between the business goals and the <strong>interactive presence</strong>.
+            </Paragraph>
+          </Box>
+          <Paragraph size="medium">alex@alexjewell.com</Paragraph>
+          <Image alt="Alex Jewell Faces" src={webFaces} />
+        </Box>
+        <Box>
+          <Grid
+            columns={{
+              count: 2,
+              size: ['75%', '25%']
+            }}
+            fill="vertical"
+            gap="none"
+          >
+            <Box background="accent-1" />
+            <WebAccentCol background="accent-2" />
+          </Grid>
+        </Box>
+      </RelativeGrid>
+      <RelativeGrid
+        columns={{
+          count: 2,
+          size: 'auto'
+        }}
+        fill="vertical"
+        gap="none"
+        id="influece"
+      >
+        <Box background="accent-3">
+          <Image alt="Alex Jewell Face" src={face} />
+          <Footer pad="medium">
+            <Text size="small"><strong>instagram:</strong> <Anchor href="#">@bestfoodalex <Instagram /></Anchor></Text>
+            <Text size="small"><strong>facebook:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
+            <Text size="small"><strong>linkedin:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
+          </Footer>
+        </Box>
+        <Box>
+          <Grid
+            columns={{
+              count: 2,
+              size: ['75%', '25%']
+            }}
+            gap="none"
+          >
+            <Box>
+              <Heading level="2" size="large">influence</Heading>
+            </Box>
+            <Box background="accent-2">
+              <Text size="large">@</Text>
+            </Box>
+          </Grid>
+          <Box pad="large">
+            <Paragraph size="medium">
+              The dawn of social media created monsters. They're the kind that hide under your bed and jump out to scare you with #promoted 
+              posts and seemingly baseless fame.
+            </Paragraph>
+            <Paragraph size="medium">
+              I'll come right out and say it: I'm <strong>@bestfoodalex</strong> and I'm a monster. But I'm friendly and I have cookies. I know how to 
+              translate your ooey gooey made-for-instagram food into consumable content and get it in front of a hungry audience.
+            </Paragraph>
+            <Paragraph size="large">
+              Hi, I'm Alex and I post burgers on the internet for likes.
+            </Paragraph>
+            <Paragraph size="medium">alex@bestfoodalex.com</Paragraph>
+          </Box>
+        </Box>
+      </RelativeGrid>
     </Grommet>
   );
-}
+};
+
+const RelativeGrid = styled(Grid)`
+  position: relative;
+`;
+
+const LogoImage = styled(Anchor)`
+  left: 15px;
+  position: absolute;
+  top: 15px;
+
+  img {
+    height: 67px;
+    width: 67px;
+  }
+`;
+
+const WebAnchor = styled(Anchor)`
+  font-size: 100px;
+  font-weight: 300;
+  margin-right: 24%;
+  margin-top: 28%;
+`;
+
+const FacesImage = styled(Anchor)`
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const InfluenceAnchor = styled(Anchor)`
+  font-size: 75px;
+  font-weight: 300;
+  margin-left: 25%;
+  margin-bottom: 35%;
+`;
+
+const WebAccentCol = styled(Box)`
+  border-top: 100px solid white;
+`;
 
 export default App;
