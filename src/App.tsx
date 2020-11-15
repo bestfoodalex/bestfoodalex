@@ -46,7 +46,7 @@ const App = () => {
           </FacesImage>
         </Box>
         <Box alignContent="center" background="brand" justify="center">
-          <InfluenceAnchor color="black" label="#influence" href="#" />
+          <InfluenceAnchor color="black" label="#influence" href="#influence" />
         </Box>
       </RelativeGrid>
       <Box id="me" pad="large">
