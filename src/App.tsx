@@ -107,13 +107,13 @@ const App = () => {
         gap="none"
         id="influece"
       >
-        <Box background="accent-3">
+        <Box background="accent-3" pad="medium">
           <Image alt="Alex Jewell Face" src={face} />
-          <Footer pad="medium">
+          <FooterBrder align="start" direction="column" pad="medium">
             <Text size="small"><strong>instagram:</strong> <Anchor href="#">@bestfoodalex <Instagram /></Anchor></Text>
             <Text size="small"><strong>facebook:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
             <Text size="small"><strong>linkedin:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
-          </Footer>
+          </FooterBrder>
         </Box>
         <Box>
           <Grid
@@ -143,6 +143,9 @@ const App = () => {
               Hi, I'm Alex and I post burgers on the internet for likes.
             </Paragraph>
             <Paragraph size="medium">alex@bestfoodalex.com</Paragraph>
+            <LogoImage className="bottom" href="#">
+              <Image alt="Alex Jewell Logo" src={Logo} />
+            </LogoImage>
           </Box>
         </Box>
       </RelativeGrid>
@@ -158,6 +161,13 @@ const LogoImage = styled(Anchor)`
   left: 15px;
   position: absolute;
   top: 15px;
+
+  &.bottom {
+    left: auto;
+    top: auto;
+    bottom: 15px;
+    right: 15px;
+  }
 
   img {
     height: 67px;
@@ -188,6 +198,11 @@ const InfluenceAnchor = styled(Anchor)`
 
 const WebAccentCol = styled(Box)`
   border-top: 100px solid white;
+`;
+
+const FooterBrder = styled(Footer)`
+  border-bottom: 19px solid black;
+  width: 50%;
 `;
 
 export default App;
