@@ -52,10 +52,10 @@ const App = () => {
       <Box id="me" pad="large">
         <Heading level="1" size="large">me</Heading>
         <Paragraph size="large">
-          Social software engineer. 
-          Boutique foodporn director and marketer. 
+          Socially-driven senior UI software engineer. 
+          Artesian foodporn director and social media marketing expert at @bestfoodalex. 
           Blockchain and decentralization consultant and activist. 
-          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media. 
+          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media.  
         </Paragraph>
       </Box>
       <RelativeGrid
