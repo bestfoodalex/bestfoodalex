@@ -113,7 +113,7 @@ const App = () => {
         }}
         fill="vertical"
         gap="none"
-        id="influece"
+        id="influence"
       >
         <Box background="accent-3" pad="medium">
           <Image alt="Alex Jewell Face" src={face} />
