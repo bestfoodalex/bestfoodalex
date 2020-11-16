@@ -49,15 +49,23 @@ const App = () => {
           <InfluenceAnchor color="black" label="#influence" href="#influence" />
         </Box>
       </RelativeGrid>
-      <Box id="me" pad="large">
-        <Heading level="1" size="large">me</Heading>
-        <Paragraph size="large">
-          Socially-driven senior UI software engineer. 
-          Artesian foodporn director and social media marketing expert at @bestfoodalex. 
-          Blockchain and decentralization consultant and activist. 
-          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media.  
-        </Paragraph>
-      </Box>
+      <Grid
+        columns={{
+          count: 2,
+          size: 'auto'
+        }}
+        gap="none"
+      >
+        <Box background="accent-5" />
+        <Box background="accent-5" id="me" pad="large">
+          <Paragraph size="large">
+            Socially-driven senior UI software engineer. 
+            Artesian foodporn director and social media marketing expert at @bestfoodalex. 
+            Blockchain and decentralization consultant and activist. 
+            Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and libtard media.  
+          </Paragraph>
+        </Box>
+      </Grid>
       <RelativeGrid
         columns={{
           count: 2,
@@ -68,7 +76,7 @@ const App = () => {
         id="web"
       >
         <Box pad="large">
-          <Heading level="2" size="large">web</Heading>
+          <WebTitle level="2">web</WebTitle>
           <Paragraph size="large">
             I've been peeking underneath the web since I was a kid, tinkering with the very fabric of the medium we now use for practically everything.
           </Paragraph>
@@ -76,13 +84,13 @@ const App = () => {
             Technology seamlessly drives our lives. Working through the complex process of finding simple solutions to everyday problems is where I 
             flourish, giving new opportunity to the product or brand I'm focusing on.
           </Paragraph>
-          <Box background="accent-5">
-            <Paragraph size="large">
+          <Box background="accent-5" pad="small" width="75%">
+            <Text size="medium">
               I'm a liaison between the business goals and the <strong>interactive presence</strong>.
-            </Paragraph>
+            </Text>
           </Box>
           <Paragraph size="medium">alex@alexjewell.com</Paragraph>
-          <Image alt="Alex Jewell Faces" src={webFaces} />
+          <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />
         </Box>
         <Box>
           <Grid
@@ -123,12 +131,12 @@ const App = () => {
             }}
             gap="none"
           >
-            <Box>
-              <Heading level="2" size="large">influence</Heading>
-            </Box>
-            <Box background="accent-2">
-              <Text size="large">@</Text>
-            </Box>
+            <InfluencerTitleBox>
+              <InfluenceTitle level="2" size="large">influ<br />ence</InfluenceTitle>
+            </InfluencerTitleBox>
+            <AtBox background="accent-2">
+              <AtText size="large">@</AtText>
+            </AtBox>
           </Grid>
           <Box pad="large">
             <Paragraph size="medium">
@@ -196,8 +204,46 @@ const InfluenceAnchor = styled(Anchor)`
   margin-bottom: 35%;
 `;
 
+const WebTitle = styled(Heading)`
+  font-size: 250px;
+  line-height: 255px;
+  margin: -120px 0 0 0;
+`;
+
+const WebFacesImage = styled(Image)`
+  height: auto;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14%;
+`;
+
 const WebAccentCol = styled(Box)`
   border-top: 100px solid white;
+`;
+
+const InfluencerTitleBox = styled(Box)`
+  
+`;
+
+const InfluenceTitle = styled(Heading)`
+  bottom: 120px;
+  font-size: 250px;
+  line-height: 175px;
+  margin: 0;
+  position: relative;
+  right: 170px;
+`;
+
+const AtBox = styled(Box)`
+  overflow: hidden;
+`;
+
+const AtText = styled(Text)`
+  color: white;
+  font-size: 288px;
+  line-height: 290px;
 `;
 
 const FooterBrder = styled(Footer)`
