@@ -92,18 +92,9 @@ const App = () => {
           <Paragraph size="medium">alex@alexjewell.com</Paragraph>
           <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />
         </Box>
-        <Box>
-          <Grid
-            columns={{
-              count: 2,
-              size: ['75%', '25%']
-            }}
-            fill="vertical"
-            gap="none"
-          >
-            <Box background="accent-1" />
-            <WebAccentCol background="accent-2" />
-          </Grid>
+        <Box direction="row">
+          <Box background="accent-1" basis="75%" />
+          <WebAccentCol background="accent-2" basis="25%" />
         </Box>
       </RelativeGrid>
       <RelativeGrid
@@ -115,29 +106,23 @@ const App = () => {
         gap="none"
         id="influence"
       >
-        <Box background="accent-3" pad="medium">
-          <Image alt="Alex Jewell Face" src={face} />
-          <FooterBrder align="start" direction="column" pad="medium">
+        <Box align="end" background="accent-3" justify="end" pad="medium">
+          <InfluenceFace alignSelf="start" alt="Alex Jewell Face" src={face} />
+          <FooterBorder align="start" alignSelf="end" direction="column" justify="end" pad="medium">
             <Text size="small"><strong>instagram:</strong> <Anchor href="#">@bestfoodalex <Instagram /></Anchor></Text>
             <Text size="small"><strong>facebook:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
             <Text size="small"><strong>linkedin:</strong> <Anchor href="#">Alex Jewell</Anchor></Text>
-          </FooterBrder>
+          </FooterBorder>
         </Box>
         <Box>
-          <Grid
-            columns={{
-              count: 2,
-              size: ['75%', '25%']
-            }}
-            gap="none"
-          >
-            <InfluencerTitleBox>
+          <Box direction="row">
+            <Box basis="75%">
               <InfluenceTitle level="2" size="large">influ<br />ence</InfluenceTitle>
-            </InfluencerTitleBox>
-            <AtBox background="accent-2">
+            </Box>
+            <AtBox background="accent-2" basis="25%">
               <AtText size="large">@</AtText>
             </AtBox>
-          </Grid>
+          </Box>
           <Box pad="large">
             <Paragraph size="medium">
               The dawn of social media created monsters. They're the kind that hide under your bed and jump out to scare you with #promoted 
@@ -223,17 +208,20 @@ const WebAccentCol = styled(Box)`
   border-top: 100px solid white;
 `;
 
-const InfluencerTitleBox = styled(Box)`
-  
+const InfluenceFace = styled(Image)`
+  height: 322px;
+  left: 20%;
+  margin: -75px auto;
+  position: absolute;
+  top: 0;
+  width: 310px;
 `;
 
 const InfluenceTitle = styled(Heading)`
-  bottom: 120px;
   font-size: 250px;
   line-height: 175px;
   margin: 0;
-  position: relative;
-  right: 170px;
+  transform: translate(-115px, -100px);
 `;
 
 const AtBox = styled(Box)`
@@ -246,7 +234,7 @@ const AtText = styled(Text)`
   line-height: 290px;
 `;
 
-const FooterBrder = styled(Footer)`
+const FooterBorder = styled(Footer)`
   border-bottom: 19px solid black;
   width: 50%;
 `;
