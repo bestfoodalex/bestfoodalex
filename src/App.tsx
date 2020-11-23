@@ -73,10 +73,9 @@ const App = () => {
         }}
         fill="vertical"
         gap="none"
-        id="web"
       >
         <Box pad="large">
-          <WebTitle level="2">web</WebTitle>
+          <WebTitle id="web" level="2">web</WebTitle>
           <Paragraph size="large">
             I've been peeking underneath the web since I was a kid, tinkering with the very fabric of the medium we now use for practically everything.
           </Paragraph>
@@ -104,7 +103,6 @@ const App = () => {
         }}
         fill="vertical"
         gap="none"
-        id="influence"
       >
         <Box align="end" background="accent-3" justify="end" pad="medium">
           <InfluenceFace alignSelf="start" alt="Alex Jewell Face" src={face} />
@@ -117,7 +115,7 @@ const App = () => {
         <Box>
           <Box direction="row">
             <Box basis="75%">
-              <InfluenceTitle level="2" size="large">influ<br />ence</InfluenceTitle>
+              <InfluenceTitle id="influence" level="2" size="large">influ<br />ence</InfluenceTitle>
             </Box>
             <AtBox background="accent-2" basis="25%">
               <AtText size="large">@</AtText>
