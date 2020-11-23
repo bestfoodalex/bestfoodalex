@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Anchor, Box, Footer, Grid, Grommet, Heading, Image, Paragraph, Text } from 'grommet';
-import { Instagram } from 'grommet-icons';
-import Logo from './assets/logo.png';
-import homeFaces from './assets/home-faces.png';
-import webFaces from './assets/web-faces.png';
+import { Anchor, Box, Card, CardBody, CardFooter, Footer, Grid, Grommet, Heading, Image, Paragraph, Text } from 'grommet';
+import { Css3, Html5, Instagram, Reactjs } from 'grommet-icons';
 import face from './assets/face.svg';
+import homeFaces from './assets/home-faces.png';
+import Logo from './assets/logo.png';
+import photo from './assets/alexjewell.jpg';
+import webFaces from './assets/web-faces.png';
 
 const theme = {
   global: {
@@ -24,6 +25,17 @@ const theme = {
     }
   }
 };
+
+const Identifier: React.FC<{ children: any; title: string; size: string; }> = ({ children, title, size, ...rest }) => (
+  <Box gap="small" align="center" direction="row" pad="small" {...rest}>
+    {children}
+    <Box>
+      <Heading level="4" size={size}>
+        {title}
+      </Heading>
+    </Box>
+  </Box>
+);
 
 const App = () => {
   return (
@@ -56,7 +68,9 @@ const App = () => {
         }}
         gap="none"
       >
-        <Box background="accent-5" />
+        <Box background="accent-3">
+          <BoxOfMe />
+        </Box>
         <Box background="accent-5" id="me" pad="large">
           <Paragraph size="large">
             Socially-driven senior UI software engineer. 
@@ -85,8 +99,59 @@ const App = () => {
           </Paragraph>
           <Box background="accent-5" pad="small" width="75%">
             <Text size="medium">
-              I'm a liaison between the business goals and the <strong>interactive presence</strong>.
+              I'm a liaison between business goals and <strong>interactive presence</strong>.
             </Text>
+          </Box>
+          <Heading level="3">Techstack</Heading>
+          <Box direction="row">
+            <Card>
+              <CardBody pad="small">
+                <Identifier
+                  title="React"
+                  size="small"
+                >
+                  <Reactjs size="large" />
+                </Identifier>
+              </CardBody>
+              <Box pad={{ horizontal: 'medium' }} responsive={false}>
+                <Paragraph size="small">Along with Angular (1 &amp; 6), vanilla JS, jQuery, etc.</Paragraph>
+              </Box>
+              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
+                <Paragraph size="small">6 years</Paragraph>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardBody pad="small">
+                <Identifier
+                  title="HTML5"
+                  size="small"
+                >
+                  <Html5 size="large" />
+                </Identifier>
+              </CardBody>
+              <Box pad={{ horizontal: 'medium' }} responsive={false}>
+                <Paragraph size="small">Including templating languages like JSX.</Paragraph>
+              </Box>
+              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
+                <Paragraph size="small">15 years</Paragraph>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardBody pad="small">
+                <Identifier
+                  title="CSS3"
+                  size="small"
+                >
+                  <Css3 size="large" />
+                </Identifier>
+              </CardBody>
+              <Box pad={{ horizontal: 'medium' }} responsive={false}>
+                <Paragraph size="small">Usually via preprocessors (SASS/SCSS) or CSS-in-JS like Styled-Components.</Paragraph>
+              </Box>
+              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
+                <Paragraph size="small">15 years</Paragraph>
+              </CardFooter>
+            </Card>
           </Box>
           <Paragraph size="medium">alex@alexjewell.com</Paragraph>
           <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />
@@ -164,6 +229,15 @@ const LogoImage = styled(Anchor)`
     height: 67px;
     width: 67px;
   }
+`;
+
+const BoxOfMe = styled(Box)`
+  background-image: url(${photo});
+  background-position: center;
+  background-size: auto 100%;
+  height: 100%;
+  opacity: .4;
+  width: 100%;
 `;
 
 const WebAnchor = styled(Anchor)`
