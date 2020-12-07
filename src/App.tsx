@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Anchor, Box, Card, CardBody, CardFooter, Footer, Grid, Grommet, Heading, Image, Paragraph, Text } from 'grommet';
+import { Anchor, Box, Footer, Grid, Grommet, Heading, Image, Paragraph, Text } from 'grommet';
 import { Css3, Html5, Instagram, Reactjs } from 'grommet-icons';
 import face from './assets/face.svg';
 import homeFaces from './assets/home-faces.png';
@@ -26,15 +26,38 @@ const theme = {
   }
 };
 
-const Identifier: React.FC<{ children: any; title: string; size: string; }> = ({ children, title, size, ...rest }) => (
-  <Box gap="small" align="center" direction="row" pad="small" {...rest}>
-    {children}
-    <Box>
-      <Heading level="4" size={size}>
+const techStack = [
+  {
+    icon: <Reactjs size="large" />,
+    title: 'React',
+    description: 'Along with Angular (1 & 6), vanilla JavaScript, jQuery, etc.',
+    years: 6
+  },
+  {
+    icon: <Html5 size="large" />,
+    title: 'HTML5',
+    description: 'Including templating languages like JSX.',
+    years: 15
+  },
+  {
+    icon: <Css3 size="large" />,
+    title: 'CSS3',
+    description: 'Usually via preprocessors (SASS/SCSS) or CSS-in-JS like Styled-Components.',
+    years: 15
+  },
+];
+
+const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years, ...rest }) => (
+  <Card>
+    <header>
+      {icon}
+      <Heading level="4" size="small">
         {title}
       </Heading>
-    </Box>
-  </Box>
+    </header>
+    <Paragraph size="small">{description}</Paragraph>
+    <Paragraph size="small">{years} years</Paragraph>
+  </Card>
 );
 
 const App = () => {
@@ -103,56 +126,9 @@ const App = () => {
             </Text>
           </Box>
           <Heading level="3">Techstack</Heading>
-          <Box direction="row">
-            <Card>
-              <CardBody pad="small">
-                <Identifier
-                  title="React"
-                  size="small"
-                >
-                  <Reactjs size="large" />
-                </Identifier>
-              </CardBody>
-              <Box pad={{ horizontal: 'medium' }} responsive={false}>
-                <Paragraph size="small">Along with Angular (1 &amp; 6), vanilla JS, jQuery, etc.</Paragraph>
-              </Box>
-              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
-                <Paragraph size="small">6 years</Paragraph>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardBody pad="small">
-                <Identifier
-                  title="HTML5"
-                  size="small"
-                >
-                  <Html5 size="large" />
-                </Identifier>
-              </CardBody>
-              <Box pad={{ horizontal: 'medium' }} responsive={false}>
-                <Paragraph size="small">Including templating languages like JSX.</Paragraph>
-              </Box>
-              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
-                <Paragraph size="small">15 years</Paragraph>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardBody pad="small">
-                <Identifier
-                  title="CSS3"
-                  size="small"
-                >
-                  <Css3 size="large" />
-                </Identifier>
-              </CardBody>
-              <Box pad={{ horizontal: 'medium' }} responsive={false}>
-                <Paragraph size="small">Usually via preprocessors (SASS/SCSS) or CSS-in-JS like Styled-Components.</Paragraph>
-              </Box>
-              <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
-                <Paragraph size="small">15 years</Paragraph>
-              </CardFooter>
-            </Card>
-          </Box>
+          <CardDeck>
+            {techStack.map(tech => <TechCard {...tech} />)}
+          </CardDeck>
           <Paragraph size="medium">alex@alexjewell.com</Paragraph>
           <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />
         </Box>
@@ -210,6 +186,8 @@ const App = () => {
 };
 
 const RelativeGrid = styled(Grid)`
+  height: auto;
+  min-height: 100%;
   position: relative;
 `;
 
@@ -274,6 +252,19 @@ const WebFacesImage = styled(Image)`
   top: 50%;
   transform: translate(-50%, -50%);
   width: 14%;
+`;
+
+const CardDeck = styled.div`
+  display: flex;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > header {
+    display: flex;
+  }
 `;
 
 const WebAccentCol = styled(Box)`
