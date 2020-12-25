@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Box, Heading, Paragraph } from 'grommet';
 import { Css3, Html5, Reactjs } from 'grommet-icons';
+import { useResponsive } from '../utils/useResponsive';
 
 const techStack = [
   {
@@ -24,42 +25,51 @@ const techStack = [
   },
 ];
 
-const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years, ...rest }) => (
-  <Card background="accent-4">
-    <Box align="center" as="header" background="accent-2" direction="row" pad="small">
-      {icon}
-      <Heading level="4" size="small">
-        {title}
-      </Heading>
-    </Box>
-    <Paragraph size="small"><em>{years} years</em></Paragraph>
-    <Paragraph size="small">{description}</Paragraph>
-  </Card>
-);
+const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years, ...rest }) => {
+  const { isMobile, isTablet } = useResponsive();
+  const isResp = isMobile || isTablet;
+
+  const Card = styled(Box)`
+    ${!isResp && 'flex: 1 1 0; margin: 6px;'}
+    ${isResp && 'margin-bottom: 10px;'}
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    h4,
+    p {
+      margin: 0;
+    }
+
+    h4 {
+      padding-left: 15px;
+    }
+
+    p {
+      padding: 12px !important;
+    }
+  `;
+
+  return (
+    <Card background="accent-4">
+      <Box align="center" as="header" background="accent-2" direction="row" pad="small">
+        {icon}
+        <Heading level="4" size="small">
+          {title}
+        </Heading>
+      </Box>
+      <Paragraph size="small"><em>{years} years</em></Paragraph>
+      <Paragraph size="small">{description}</Paragraph>
+    </Card>
+  );
+};
 
 const CardDeck = styled.div`
   display: flex;
-`;
-
-const Card = styled(Box)`
-  flex: 1 1 0;
-  margin: 6px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  h4,
-  p {
-    margin: 0;
-  }
-
-  h4 {
-    padding-left: 15px;
-  }
-
-  p {
-    padding: 12px !important;
+  
+  &.isMobile {
+    flex-direction: column;
   }
 `;
 

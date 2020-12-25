@@ -2,22 +2,56 @@ import React from 'react';
 import styled from 'styled-components';
 import { Anchor, Box, Grid, Paragraph } from 'grommet';
 import colors from '../theme/colors';
+import { useResponsive } from '../utils/useResponsive';
 import photo from '../assets/alexjewell.jpg';
 
 const About: React.FC<{ pageRefs: any }> = (props) => {
   const { pageRefs: { aboutRef } } = props;
+  const { isMobile } = useResponsive();
+
+  const BoxOfMeParent = styled(Box)`
+    ${isMobile && `
+      min-height: 300px;
+    `}
+  `;
+
+  const BoxOfMe = styled(Box)`
+    background-image: url(${photo});
+    background-position: center;
+    background-size: auto 100%;
+    height: 100%;
+    opacity: .4;
+    width: 100%;
+
+    ${isMobile && `
+      background-repeat: no-repeat;
+      background-size: cover;
+    `}
+  `;
+
+  const A = styled(Anchor)`
+    &:link,
+    &:active,
+    &:hover,
+    &:visited {
+      color: ${colors.whiteGray};
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  `;
 
   return (
     <Grid
       columns={{
-        count: 2,
+        count: isMobile ? 1 : 2,
         size: 'auto'
       }}
       gap="none"
+      responsive={true}
     >
-      <Box background="accent-3">
+      <BoxOfMeParent background="accent-3">
         <BoxOfMe />
-      </Box>
+      </BoxOfMeParent>
       <Box background="accent-5" id="me" pad="large" ref={aboutRef}>
         <Paragraph size="large">
           Socially-driven senior UI software engineer. 
@@ -32,25 +66,5 @@ const About: React.FC<{ pageRefs: any }> = (props) => {
     </Grid>
   );
 };
-
-const BoxOfMe = styled(Box)`
-  background-image: url(${photo});
-  background-position: center;
-  background-size: auto 100%;
-  height: 100%;
-  opacity: .4;
-  width: 100%;
-`;
-
-const A = styled(Anchor)`
-  &:link,
-  &:active,
-  &:hover,
-  &:visited {
-    color: ${colors.whiteGray};
-    font-weight: bold;
-    text-decoration: underline;
-  }
-`;
 
 export default About;
