@@ -1,39 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading, Paragraph } from 'grommet';
+import { Box, Heading, Paragraph } from 'grommet';
 import { Css3, Html5, Reactjs } from 'grommet-icons';
 
 const techStack = [
   {
     icon: <Reactjs size="large" />,
     title: 'React',
-    description: 'Along with Angular (1 & 6), vanilla JavaScript, jQuery, etc.',
+    description: 'Flavor: TypeScript, ES6. Along with Angular (1 & 6), vanilla JavaScript, jQuery, etc.',
     years: 6
   },
   {
     icon: <Html5 size="large" />,
     title: 'HTML5',
-    description: 'Including templating languages like JSX.',
+    description: 'This is a given, but I can mark things up.',
     years: 15
   },
   {
     icon: <Css3 size="large" />,
     title: 'CSS3',
-    description: 'Usually via preprocessors (SASS/SCSS) or CSS-in-JS like Styled-Components.',
+    description: 'Usually via preprocessors (SASS/SCSS) or CSS-in-JS libraries like Styled-Components.',
     years: 15
   },
 ];
 
 const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years, ...rest }) => (
-  <Card>
-    <header>
+  <Card background="accent-4">
+    <Box align="center" as="header" background="accent-2" direction="row" pad="small">
       {icon}
       <Heading level="4" size="small">
         {title}
       </Heading>
-    </header>
+    </Box>
+    <Paragraph size="small"><em>{years} years</em></Paragraph>
     <Paragraph size="small">{description}</Paragraph>
-    <Paragraph size="small">{years} years</Paragraph>
   </Card>
 );
 
@@ -41,12 +41,25 @@ const CardDeck = styled.div`
   display: flex;
 `;
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
+const Card = styled(Box)`
+  flex: 1 1 0;
+  margin: 6px;
 
-  > header {
-    display: flex;
+  &:first-child {
+    margin-left: 0;
+  }
+
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    padding-left: 15px;
+  }
+
+  p {
+    padding: 12px !important;
   }
 `;
 

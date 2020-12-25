@@ -1,19 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Grommet } from 'grommet';
 import Landing from './components/Landing';
 import About from './components/About';
 import Web from './components/Web';
 import Influence from './components/Influence';
+import colors from './theme/colors';
 
 const theme = {
   global: {
     colors: {
-      brand: '#50E3C2',
-      'accent-1': '#BF53A2',
-      'accent-2': '#F4CCE9',
-      'accent-3': '#5BA8E4',
-      'accent-4': '#E5E5E5',
-      'accent-5': '#595858'
+      ...colors
     },
     font: {
       family: 'Lato',
@@ -24,12 +20,20 @@ const theme = {
 };
 
 const App = () => {
+  const pageRefs = {
+    aboutRef: useRef(),
+    webRef: useRef(),
+    influenceRef: useRef()
+  };
+
+  const scrollToRef = (currRef: string) => (pageRefs as any)[currRef].current.scrollIntoView({ behavior: 'smooth' });
+
   return (
     <Grommet theme={theme} full>
-      <Landing />
-      <About />
-      <Web />
-      <Influence />
+      <Landing refCallback={scrollToRef} />
+      <About pageRefs={pageRefs} />
+      <Web pageRefs={pageRefs} />
+      <Influence pageRefs={pageRefs} />
     </Grommet>
   );
 };
