@@ -6,8 +6,8 @@ import Logo from './Logo';
 import { useResponsive } from '../utils/useResponsive';
 import homeFaces from '../assets/home-faces.png';
 
-const Landing: React.FC<{ refCallback: any }> = (props) => {
-  const { refCallback } = props;
+const Landing: React.FC<{ pageRefs: any; refCallback: any; }> = (props) => {
+  const { pageRefs: { topRef }, refCallback } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;
 
@@ -57,8 +57,8 @@ const Landing: React.FC<{ refCallback: any }> = (props) => {
       fill="vertical"
       gap="none"
     >
-      <Box alignContent="center" background="accent-4" justify="center">
-        <Logo />
+      <Box alignContent="center" background="accent-4" justify="center" ref={topRef}>
+        <Logo refCallback={refCallback} />
         <WebAnchor alignSelf="end" color="black" label="<Web/>" href="#web" onClick={(e) => { e.preventDefault(); refCallback('webRef'); }} />
         <FacesImage href="#me" onClick={(e) => { e.preventDefault(); refCallback('aboutRef'); }}>
           <Image alt="Alex Jewell Faces" src={homeFaces} width="medium" />

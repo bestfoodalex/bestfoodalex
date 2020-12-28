@@ -45,6 +45,7 @@ const Web: React.FC<{ pageRefs: any }> = (props) => {
 
   return (
     <RelativeGrid
+      a11yTitle="Frontend Software Engineer Section: React Developer"
       columns={{
         count: isMobile ? 1 : 2,
         size: 'auto'
@@ -69,15 +70,15 @@ const Web: React.FC<{ pageRefs: any }> = (props) => {
           </Text>
           {isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
         </Box>
-        <Heading level="3">Current Techstack</Heading>
-        <CardDeck className={isResp ? 'isMobile' : ''}>
+        <Heading a11yTitle="Current Tech Stack Section" level="3">Current Tech Stack</Heading>
+        <CardDeck aria-label="Current tech stack includes the following languages:" className={isResp ? 'isMobile' : ''}>
           {techStack.map(tech => <TechCard {...tech} />)}
         </CardDeck>
         <Paragraph size="small">
           <strong>Other notable technologies and concepts include, but are not limited to:</strong><br />
           Node, Redux, GraphQL, Axios/fetcher, Jenkins, AWS, Agile methodology (JIRA), WordPress, eating hot chip, and meme'ing your face off.
         </Paragraph>
-        <EmailParagraph size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
+        <EmailParagraph a11yTitle="Email me at Alex at Alex Jewell dot com" size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
         {!isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
       </WebBox>
       <WebBox direction="row">

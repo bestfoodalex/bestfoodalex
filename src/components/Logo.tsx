@@ -3,11 +3,15 @@ import styled from 'styled-components';
 import { Anchor, Image } from 'grommet';
 import LogoImage from '../assets/logo.png';
 
-const Logo = () => (
-  <LogoAnchor href="#">
-    <Image alt="Alex Jewell Logo" src={LogoImage} />
-  </LogoAnchor>
-);
+const Logo: React.FC<{ refCallback: any }> = (props) => {
+  const { refCallback } = props;
+
+  return (
+    <LogoAnchor a11yTitle="Back to Top" href="#" id="top" onClick={(e) => { e.preventDefault(); refCallback('topRef'); }}>
+      <Image a11yTitle="Alex Jewell Logo" alt="Alex Jewell Logo" src={LogoImage} />
+    </LogoAnchor>
+  );
+};
 
 const LogoAnchor = styled(Anchor)`
   left: 15px;

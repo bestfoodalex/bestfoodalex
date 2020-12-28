@@ -8,8 +8,8 @@ import colors from '../theme/colors';
 import { useResponsive } from '../utils/useResponsive';
 import face from '../assets/face.svg';
 
-const Influence: React.FC<{ pageRefs: any }> = (props) => {
-  const { pageRefs: { influenceRef } } = props;
+const Influence: React.FC<{ pageRefs: any; refCallback: any; }> = (props) => {
+  const { pageRefs: { influenceRef }, refCallback } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;
 
@@ -83,6 +83,7 @@ const Influence: React.FC<{ pageRefs: any }> = (props) => {
 
   return (
     <RelativeGrid
+      a11yTitle="Influencer Section: @bestfoodalex"
       columns={{
         count: isMobile ? 1 : 2,
         size: 'auto'
@@ -94,7 +95,9 @@ const Influence: React.FC<{ pageRefs: any }> = (props) => {
       <Box>
         <Box direction="row">
           <Box basis="75%">
-            <InfluenceTitle id="influence" level="2" ref={influenceRef} size="large">influ{!isMobile && <br />}ence</InfluenceTitle>
+            <InfluenceTitle a11yTitle="Influence" id="influence" level="2" ref={influenceRef} size="large">
+              influ{!isMobile && <br />}ence
+            </InfluenceTitle>
           </Box>
           <AtBox background="accent-2" basis="25%">
             <AtText size="large">@</AtText>
@@ -106,15 +109,16 @@ const Influence: React.FC<{ pageRefs: any }> = (props) => {
             posts and seemingly baseless fame.
           </Paragraph>
           <Paragraph size="medium">
-            I'll come right out and say it: I'm <A href="https://instagram.com/bestfoodalex" target="_blank">@bestfoodalex</A> and I'm a monster. 
-            But I'm friendly and I have cookies. I know how to translate your ooey gooey made-for-instagram food into consumable content and get 
-            it in front of a hungry audience.
+            I'll come right out and say it: I'm{' '}
+            <A a11yTitle="Follow me on Instagram at Best Food Alex" href="https://instagram.com/bestfoodalex" target="_blank">@bestfoodalex</A>{' '}
+            and I'm a monster. But I'm friendly and I have cookies. I know how to translate your ooey gooey made-for-instagram food into consumable 
+            content and get it in front of a hungry audience.
           </Paragraph>
           <Paragraph size="large">
             Hi, I'm Alex and I post burgers on the internet for likes.
           </Paragraph>
-          <EmailParagraph size="medium"><EmailArrowRight /> alex@bestfoodalex.com</EmailParagraph>
-          {!isResp && <Logo />}
+          <EmailParagraph a11yTitle="Email me at Alex at Best Food Alex dot com" size="medium"><EmailArrowRight /> alex@bestfoodalex.com</EmailParagraph>
+          {!isResp && <Logo refCallback={refCallback} />}
         </Box>
       </Box>
       {isMobile && <Feet />}

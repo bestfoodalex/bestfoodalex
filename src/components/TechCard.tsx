@@ -52,7 +52,7 @@ const TechCard: React.FC<{ icon: any; title: string; description: string; years:
   `;
 
   return (
-    <Card background="accent-4">
+    <Card a11yTitle={title} background="accent-4">
       <Box align="center" as="header" background="accent-2" direction="row" pad="small">
         {icon}
         <Heading level="4" size="small">

@@ -26,6 +26,7 @@ const About: React.FC<{ pageRefs: any }> = (props) => {
     ${isMobile && `
       background-repeat: no-repeat;
       background-size: cover;
+      flex: 1;
     `}
   `;
 
@@ -42,6 +43,7 @@ const About: React.FC<{ pageRefs: any }> = (props) => {
 
   return (
     <Grid
+      a11yTitle="About Alex Jewell"
       columns={{
         count: isMobile ? 1 : 2,
         size: 'auto'

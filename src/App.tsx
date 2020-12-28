@@ -4,6 +4,7 @@ import Landing from './components/Landing';
 import About from './components/About';
 import Web from './components/Web';
 import Influence from './components/Influence';
+import CopyrightFooter from './components/CopyrightFooter';
 import colors from './theme/colors';
 
 const theme = {
@@ -21,6 +22,7 @@ const theme = {
 
 const App = () => {
   const pageRefs = {
+    topRef: useRef(),
     aboutRef: useRef(),
     webRef: useRef(),
     influenceRef: useRef()
@@ -30,10 +32,11 @@ const App = () => {
 
   return (
     <Grommet theme={theme} full>
-      <Landing refCallback={scrollToRef} />
+      <Landing pageRefs={pageRefs} refCallback={scrollToRef} />
       <About pageRefs={pageRefs} />
       <Web pageRefs={pageRefs} />
-      <Influence pageRefs={pageRefs} />
+      <Influence pageRefs={pageRefs} refCallback={scrollToRef} />
+      <CopyrightFooter refCallback={scrollToRef} />
     </Grommet>
   );
 };
