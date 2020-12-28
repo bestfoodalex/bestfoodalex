@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { Anchor, Box, Grid, Paragraph } from 'grommet';
 import colors from '../theme/colors';
 import { useResponsive } from '../utils/useResponsive';
+import { PageRefType } from '../utils/pageRefs';
 import photo from '../assets/alexjewell.jpg';
 
-const About: React.FC<{ pageRefs: any }> = (props) => {
+const About: React.FC<{ pageRefs: PageRefType; }> = (props) => {
   const { pageRefs: { aboutRef } } = props;
   const { isMobile } = useResponsive();
 

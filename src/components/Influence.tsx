@@ -6,9 +6,10 @@ import Logo from './Logo';
 import { EmailArrowRight, EmailParagraph } from './EmailParagraph';
 import colors from '../theme/colors';
 import { useResponsive } from '../utils/useResponsive';
+import { PageRefType, ScrollToRefFunc } from '../utils/pageRefs';
 import face from '../assets/face.svg';
 
-const Influence: React.FC<{ pageRefs: any; refCallback: any; }> = (props) => {
+const Influence: React.FC<{ pageRefs: PageRefType; refCallback: ScrollToRefFunc; }> = (props) => {
   const { pageRefs: { influenceRef }, refCallback } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;

@@ -6,6 +6,7 @@ import Web from './components/Web';
 import Influence from './components/Influence';
 import CopyrightFooter from './components/CopyrightFooter';
 import colors from './theme/colors';
+import { PageRefType, ScrollToRefFunc } from './utils/pageRefs';
 
 const theme = {
   global: {
@@ -21,14 +22,14 @@ const theme = {
 };
 
 const App = () => {
-  const pageRefs = {
+  const pageRefs: PageRefType = {
     topRef: useRef(),
     aboutRef: useRef(),
     webRef: useRef(),
     influenceRef: useRef()
   };
 
-  const scrollToRef = (currRef: string) => (pageRefs as any)[currRef].current.scrollIntoView({ behavior: 'smooth' });
+  const scrollToRef: ScrollToRefFunc = (currRef: string) => (pageRefs as any)[currRef].current.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <Grommet theme={theme} full>

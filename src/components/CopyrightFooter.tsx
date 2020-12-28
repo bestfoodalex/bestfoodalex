@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Footer, Text } from 'grommet';
 import { useResponsive } from '../utils/useResponsive';
+import { ScrollToRefFunc } from '../utils/pageRefs';
 import Logo from './Logo';
 
-const CopyrightFooter: React.FC<{ refCallback: any }> = (props) => {
+const CopyrightFooter: React.FC<{ refCallback: ScrollToRefFunc; }> = (props) => {
   const { refCallback } = props;
 	const { isMobile } = useResponsive();
 	const copyrightYear = new Date().getFullYear();

@@ -5,9 +5,10 @@ import RelativeGrid from './RelativeGrid';
 import { CardDeck, TechCard, techStack } from './TechCard';
 import { EmailArrowRight, EmailParagraph } from './EmailParagraph';
 import { useResponsive } from '../utils/useResponsive';
+import { PageRefType } from '../utils/pageRefs';
 import webFaces from '../assets/web-faces.png';
 
-const Web: React.FC<{ pageRefs: any }> = (props) => {
+const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
   const { pageRefs: { webRef } } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;

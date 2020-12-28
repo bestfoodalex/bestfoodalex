@@ -4,9 +4,10 @@ import { Anchor, Box, Image } from 'grommet';
 import RelativeGrid from './RelativeGrid';
 import Logo from './Logo';
 import { useResponsive } from '../utils/useResponsive';
+import { PageRefType, ScrollToRefFunc } from '../utils/pageRefs';
 import homeFaces from '../assets/home-faces.png';
 
-const Landing: React.FC<{ pageRefs: any; refCallback: any; }> = (props) => {
+const Landing: React.FC<{ pageRefs: PageRefType; refCallback: ScrollToRefFunc; }> = (props) => {
   const { pageRefs: { topRef }, refCallback } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;

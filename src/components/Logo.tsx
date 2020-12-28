@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Anchor, Image } from 'grommet';
+import { ScrollToRefFunc } from '../utils/pageRefs';
 import LogoImage from '../assets/logo.png';
 
-const Logo: React.FC<{ refCallback: any }> = (props) => {
+const Logo: React.FC<{ refCallback: ScrollToRefFunc; }> = (props) => {
   const { refCallback } = props;
 
   return (
