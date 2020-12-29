@@ -58,7 +58,7 @@ const About: React.FC<{ pageRefs: PageRefType; }> = (props) => {
       <Box background="accent-5" id="me" pad="large" ref={aboutRef}>
         <Paragraph size="large">
           Socially-driven senior UI software engineer. 
-          Artesian foodporn director and social media marketing expert at <A href="https://instagram.com/bestfoodalex" target="_blank">@bestfoodalex</A>. 
+          Artisan foodporn director and social media marketing expert at <A href="https://instagram.com/bestfoodalex" target="_blank">@bestfoodalex</A>. 
           Blockchain and decentralization consultant and activist. 
           Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and liberal media.  
         </Paragraph>
