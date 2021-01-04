@@ -1,4 +1,4 @@
-![Alex Jewell logo](http://alexjewell.com/images/logo.png)
+![Alex Jewell logo](http://alexjewell.com/logo.png)
 
 # Alex Jewell
 
