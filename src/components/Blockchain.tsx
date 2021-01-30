@@ -29,6 +29,7 @@ const Blockchain: React.FC<{ setBlockchain: any; }> = (props) => {
         <BlockchainTitle a11yTitle="Blockchain" id="blockchain" level="2" size="large">
           block{!isMobile && <br />}chain
         </BlockchainTitle>
+        <a href="#" onClick={(e) => { e.preventDefault(); setBlockchain(false); }}>Close</a>
       </Box>
     </RelativeGrid>
   );

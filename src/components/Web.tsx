@@ -81,7 +81,7 @@ const Web: React.FC<{ pageRefs: PageRefType; setBlockchain: any; }> = (props) =>
         </Paragraph>
         <EmailParagraph a11yTitle="Email me at Alex at Alex Jewell dot com" size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
         {!isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
-        <a href="#" onClick={() => setBlockchain(true)}>Click me</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); setBlockchain(true); }}>Blockchain</a>
       </WebBox>
       <WebBox direction="row">
         <Box background="accent-1" basis="75%" />
