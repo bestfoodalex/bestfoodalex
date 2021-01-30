@@ -8,8 +8,8 @@ import { useResponsive } from '../utils/useResponsive';
 import { PageRefType } from '../utils/pageRefs';
 import webFaces from '../assets/web-faces.png';
 
-const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
-  const { pageRefs: { webRef } } = props;
+const Web: React.FC<{ pageRefs: PageRefType; setBlockchain: any; }> = (props) => {
+  const { pageRefs: { webRef }, setBlockchain } = props;
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;
 
@@ -81,6 +81,7 @@ const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
         </Paragraph>
         <EmailParagraph a11yTitle="Email me at Alex at Alex Jewell dot com" size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
         {!isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
+        <a href="#" onClick={() => setBlockchain(true)}>Click me</a>
       </WebBox>
       <WebBox direction="row">
         <Box background="accent-1" basis="75%" />

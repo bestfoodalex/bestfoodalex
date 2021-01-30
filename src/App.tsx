@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Grommet } from 'grommet';
 import Landing from './components/Landing';
 import About from './components/About';
 import Web from './components/Web';
+import Blockchain from './components/Blockchain';
 import Influence from './components/Influence';
 import CopyrightFooter from './components/CopyrightFooter';
 import colors from './theme/colors';
@@ -22,6 +23,7 @@ const theme = {
 };
 
 const App = () => {
+  const [blockchain, setBlockchain] = useState(false);
   const pageRefs: PageRefType = {
     topRef: useRef(),
     aboutRef: useRef(),
@@ -33,11 +35,19 @@ const App = () => {
 
   return (
     <Grommet theme={theme} full>
-      <Landing pageRefs={pageRefs} refCallback={scrollToRef} />
-      <About pageRefs={pageRefs} />
-      <Web pageRefs={pageRefs} />
-      <Influence pageRefs={pageRefs} refCallback={scrollToRef} />
-      <CopyrightFooter refCallback={scrollToRef} />
+      {blockchain
+        ? (
+          <Blockchain setBlockchain={setBlockchain} />
+        ) : (
+          <>
+            <Landing pageRefs={pageRefs} refCallback={scrollToRef} />
+            <About pageRefs={pageRefs} />
+            <Web pageRefs={pageRefs} setBlockchain={setBlockchain} />
+            <Influence pageRefs={pageRefs} refCallback={scrollToRef} />
+            <CopyrightFooter refCallback={scrollToRef} />
+          </>
+        )
+      }
     </Grommet>
   );
 };
