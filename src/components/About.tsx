@@ -63,7 +63,7 @@ const About: React.FC<{ pageRefs: PageRefType; }> = (props) => {
           Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and liberal media.  
         </Paragraph>
         <Paragraph size="medium">
-          I've got a knack for upsetting your uncle at Thanksgiving and explaining what Bitcoin is to your aunt. Hire me for your next family gathering.
+          I've got a knack for upsetting your uncle at Christmas and explaining what Bitcoin is to your aunt. Hire me for your next family gathering.
         </Paragraph>
       </Box>
     </Grid>
