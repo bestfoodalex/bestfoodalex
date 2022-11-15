@@ -57,10 +57,10 @@ const About: React.FC<{ pageRefs: PageRefType; }> = (props) => {
       </BoxOfMeParent>
       <Box background="accent-5" id="me" pad="large" ref={aboutRef}>
         <Paragraph size="large">
-          Socially-driven senior UI software engineer. 
+          Socially-driven lead software engineer. 
           Artisan foodporn director and social media marketing expert at <A href="https://instagram.com/bestfoodalex" target="_blank">@bestfoodalex</A>. 
           Blockchain and decentralization consultant and activist. 
-          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, biotech advocacy, and liberal media.  
+          Leftist technocratic ghostwriter for political organizations and lobbyists, global economics watchdog groups, and biotech advocacy.
         </Paragraph>
         <Paragraph size="medium">
           I've got a knack for upsetting your uncle at Thanksgiving and explaining what Bitcoin is to your aunt. Hire me for your next family gathering.
