@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Heading, Image, Paragraph, Text } from 'grommet';
+import { Box, Button, Heading, Image, Paragraph, Text } from 'grommet';
+import { Connect } from 'grommet-icons';
 import RelativeGrid from './RelativeGrid';
 import { CardDeck, TechCard, techStack } from './TechCard';
 import { EmailArrowRight, EmailParagraph } from './EmailParagraph';
@@ -79,6 +80,8 @@ const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
           <strong>Other notable technologies and concepts include, but are not limited to:</strong><br />
           Node, Redux, GraphQL, Axios/fetcher, Jenkins, AWS, Agile methodology (JIRA), WordPress, eating hot chip, and meme'ing your face off.
         </Paragraph>
+        <Heading a11yTitle="Web3 Section" level="3">Web3</Heading>
+        <Button primary icon={<Connect />} label="Connect Wallet" size="large" />
         <EmailParagraph a11yTitle="Email me at Alex at Alex Jewell dot com" size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
         {!isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
       </WebBox>

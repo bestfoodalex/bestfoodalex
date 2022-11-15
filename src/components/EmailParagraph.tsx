@@ -6,6 +6,7 @@ const EmailParagraph = styled(Paragraph)`
   align-items: center;
   display: flex;
   font-weight: bold;
+  margin-top: 5em;
 `;
 
 const EmailArrowRight = styled(Box)`

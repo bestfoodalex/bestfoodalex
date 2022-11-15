@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Grommet } from 'grommet';
+import { Web3Modal } from '@web3modal/react'
 import Landing from './components/Landing';
 import About from './components/About';
 import Web from './components/Web';
@@ -31,6 +32,15 @@ const App = () => {
 
   const scrollToRef: ScrollToRefFunc = (currRef: string) => (pageRefs as any)[currRef].current.scrollIntoView({ behavior: 'smooth' });
 
+  const web3modalConfig = {
+    projectId: process.env.WALLETCONNECT_PROJECT_ID || '',
+    theme: 'dark' as const,
+    accentColor: 'default' as const, 
+    ethereum: {
+      appName: 'bestfoodalex' as const
+    }
+  };
+  
   return (
     <Grommet theme={theme} full>
       <Landing pageRefs={pageRefs} refCallback={scrollToRef} />
@@ -38,6 +48,7 @@ const App = () => {
       <Web pageRefs={pageRefs} />
       <Influence pageRefs={pageRefs} refCallback={scrollToRef} />
       <CopyrightFooter refCallback={scrollToRef} />
+      <Web3Modal {...web3modalConfig} />
     </Grommet>
   );
 };
