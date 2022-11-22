@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Box, Button, Heading, Image, Paragraph, Text } from 'grommet';
 import { Connect } from 'grommet-icons';
 import { useWeb3Modal } from '@web3modal/react'
+import { useAccount } from 'wagmi'
 import RelativeGrid from './RelativeGrid';
 import { CardDeck, TechCard, techStack } from './TechCard';
 import { EmailArrowRight, EmailParagraph } from './EmailParagraph';
@@ -15,6 +16,7 @@ const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;
   const { open } = useWeb3Modal();
+  const { isConnected } = useAccount();
 
   const WebBox = styled(Box)`
     &.firstBox {
@@ -76,14 +78,18 @@ const Web: React.FC<{ pageRefs: PageRefType; }> = (props) => {
         </Box>
         <Heading a11yTitle="Current Tech Stack Section" level="3">Current Tech Stack</Heading>
         <CardDeck aria-label="Current tech stack includes the following languages:" className={isResp ? 'isMobile' : ''}>
-          {techStack.map(tech => <TechCard {...tech} />)}
+          {techStack.map(tech => <TechCard key={tech.title} {...tech} />)}
         </CardDeck>
         <Paragraph size="small">
           <strong>Other notable technologies and concepts include, but are not limited to:</strong><br />
           Node, Redux, GraphQL, Axios/fetcher, Jenkins, AWS, Agile methodology (JIRA), WordPress, eating hot chip, and meme'ing your face off.
         </Paragraph>
         <Heading a11yTitle="Web3 Section" level="3">Web3</Heading>
-        <Button primary icon={<Connect />} label="Connect Wallet" onClick={() => open()} size="large" />
+        {isConnected ? (
+          <Paragraph size="small">Your wallet is connected!</Paragraph>
+        ) : (
+          <Button primary icon={<Connect />} label="Connect Wallet" onClick={() => open()} size="large" />
+        )}
         <EmailParagraph a11yTitle="Email me at Alex at Alex Jewell dot com" size="medium"><EmailArrowRight /> alex@alexjewell.com</EmailParagraph>
         {!isMobile && <WebFacesImage alt="Alex Jewell Faces" src={webFaces} />}
       </WebBox>

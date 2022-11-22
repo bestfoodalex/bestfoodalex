@@ -37,30 +37,26 @@ const App = () => {
   };
 
   const scrollToRef: ScrollToRefFunc = (currRef: string) => (pageRefs as any)[currRef].current.scrollIntoView({ behavior: 'smooth' });
-
+  
+  // WalletConnect projectId
+  const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || ''
+  
   // chains
   const chains = [chain.mainnet]
 
   // Wagmi client
   const { provider } = configureChains(chains, [
-    walletConnectProvider({ projectId: process.env.WALLETCONNECT_PROJECT_ID || '' }),
+    walletConnectProvider({ projectId }),
   ]);
 
   const wagmiClient = createClient({
     autoConnect: true,
-    connectors: modalConnectors({ appName: 'bestfoodalex', chains }) as any,
+    connectors: modalConnectors({ appName: 'bestfoodalex', chains }),
     provider,
   });
 
   // Web3Modal Ethereum Client
   const ethereumClient = new EthereumClient(wagmiClient, chains);
-  
-  const web3modalConfig = {
-    projectId: process.env.WALLETCONNECT_PROJECT_ID || '',
-    theme: 'dark' as const,
-    accentColor: 'default' as const,
-    ethereumClient,
-  };
   
   return (
     <>
@@ -73,7 +69,12 @@ const App = () => {
           <CopyrightFooter refCallback={scrollToRef} />
         </Grommet>
       </WagmiConfig>
-      <Web3Modal {...web3modalConfig} />
+      <Web3Modal
+        accentColor="default"
+        ethereumClient={ethereumClient}
+        projectId={projectId}
+        theme="dark"
+      />
     </>
   );
 };
