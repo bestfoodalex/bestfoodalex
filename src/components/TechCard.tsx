@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Box, Heading, Paragraph } from 'grommet';
 import { Css3, Html5, Reactjs } from 'grommet-icons';
@@ -25,7 +24,7 @@ const techStack = [
   },
 ];
 
-const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years, ...rest }) => {
+const TechCard: React.FC<{ icon: any; title: string; description: string; years: number; }> = ({ icon, title, description, years }) => {
   const { isMobile, isTablet } = useResponsive();
   const isResp = isMobile || isTablet;
 

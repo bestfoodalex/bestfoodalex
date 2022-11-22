@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Grommet } from 'grommet';
 import { Web3Modal } from '@web3modal/react'
 import {

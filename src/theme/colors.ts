@@ -1,4 +1,4 @@
-export default {
+const colors = {
 	brand: '#50E3C2',
   'accent-1': '#BF53A2',
   'accent-2': '#F4CCE9',
@@ -8,3 +8,5 @@ export default {
   whiteGray: '#f8f8f8',
   almostBlack: '#111111'
 };
+
+export default colors;
